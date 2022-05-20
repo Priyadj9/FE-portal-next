@@ -31,9 +31,10 @@ export const _appAuthors = [...Array(3)].map((_, index) => ({
   favourite: randomNumberRange(9999, 19999),
 }));
 
-export const _appInvoices = [...Array(5)].map((_, index) => ({
+export const _appInvoices = [...Array(10)].map((_, index) => ({
   id: `${Date.now() + index}`,
   price: _mock.number.price(index),
+  promocodes: randomInArray(['1234', '3456', '678', '900', '678']),
   category: randomInArray(['Android', 'Mac', 'Windows']),
   status: randomInArray(['paid', 'out_of_date', 'in_progress']),
 }));

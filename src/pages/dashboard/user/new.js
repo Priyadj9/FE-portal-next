@@ -22,20 +22,21 @@ UserCreate.getLayout = function getLayout(page) {
 
 export default function UserCreate() {
   const { themeStretch } = useSettings();
+  return null;
 
-  return (
-    <Page title="User: Create a new user">
-      <Container maxWidth={themeStretch ? false : 'lg'}>
-        <HeaderBreadcrumbs
-          heading="Create a new user"
-          links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'User', href: PATH_DASHBOARD.user.list },
-            { name: 'New user' },
-          ]}
-        />
-        <UserNewEditForm />
-      </Container>
-    </Page>
-  );
+  // return (
+  //   <Page title="User: Create a new user">
+  //     <Container maxWidth={themeStretch ? false : 'lg'}>
+  //       <HeaderBreadcrumbs
+  //         heading="Create a new user"
+  //         links={[
+  //           { name: 'Dashboard', href: PATH_DASHBOARD.root },
+  //           { name: 'User', href: PATH_DASHBOARD.user.list },
+  //           { name: 'New user' },
+  //         ]}
+  //       />
+  //       <UserNewEditForm />
+  //     </Container>
+  //   </Page>
+  // );
 }

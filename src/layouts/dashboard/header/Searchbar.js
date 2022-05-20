@@ -43,39 +43,40 @@ export default function Searchbar() {
   const handleClose = () => {
     setOpen(false);
   };
+  return null;
 
-  return (
-    <ClickAwayListener onClickAway={handleClose}>
-      <div>
-        {!isOpen && (
-          <IconButtonAnimate onClick={handleOpen}>
-            <Iconify icon={'eva:search-fill'} width={20} height={20} />
-          </IconButtonAnimate>
-        )}
+  // return (
+  //   <ClickAwayListener onClickAway={handleClose}>
+  //     <div>
+  //       {!isOpen && (
+  //         <IconButtonAnimate onClick={handleOpen}>
+  //           <Iconify icon={'eva:search-fill'} width={20} height={20} />
+  //         </IconButtonAnimate>
+  //       )}
 
-        <Slide direction="down" in={isOpen} mountOnEnter unmountOnExit>
-          <SearchbarStyle>
-            <Input
-              autoFocus
-              fullWidth
-              disableUnderline
-              placeholder="Search…"
-              startAdornment={
-                <InputAdornment position="start">
-                  <Iconify
-                    icon={'eva:search-fill'}
-                    sx={{ color: 'text.disabled', width: 20, height: 20 }}
-                  />
-                </InputAdornment>
-              }
-              sx={{ mr: 1, fontWeight: 'fontWeightBold' }}
-            />
-            <Button variant="contained" onClick={handleClose}>
-              Search
-            </Button>
-          </SearchbarStyle>
-        </Slide>
-      </div>
-    </ClickAwayListener>
-  );
+  //       <Slide direction="down" in={isOpen} mountOnEnter unmountOnExit>
+  //         <SearchbarStyle>
+  //           <Input
+  //             autoFocus
+  //             fullWidth
+  //             disableUnderline
+  //             placeholder="Search…"
+  //             startAdornment={
+  //               <InputAdornment position="start">
+  //                 <Iconify
+  //                   icon={'eva:search-fill'}
+  //                   sx={{ color: 'text.disabled', width: 20, height: 20 }}
+  //                 />
+  //               </InputAdornment>
+  //             }
+  //             sx={{ mr: 1, fontWeight: 'fontWeightBold' }}
+  //           />
+  //           <Button variant="contained" onClick={handleClose}>
+  //             Search
+  //           </Button>
+  //         </SearchbarStyle>
+  //       </Slide>
+  //     </div>
+  //   </ClickAwayListener>
+  // );
 }

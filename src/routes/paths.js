@@ -35,10 +35,10 @@ export const PATH_PAGE = {
 export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
   general: {
-    app: path(ROOTS_DASHBOARD, '/app'),
-    ecommerce: path(ROOTS_DASHBOARD, '/ecommerce'),
+    promocodes: path(ROOTS_DASHBOARD, '/promocodes'),
+    notifications: path(ROOTS_DASHBOARD, '/notifications'),
     analytics: path(ROOTS_DASHBOARD, '/analytics'),
-    banking: path(ROOTS_DASHBOARD, '/banking'),
+    accounts: path(ROOTS_DASHBOARD, '/accounts'),
     booking: path(ROOTS_DASHBOARD, '/booking'),
   },
   mail: {

@@ -34,20 +34,22 @@ export default function UserEdit() {
 
   const currentUser = _userList.find((user) => paramCase(user.name) === name);
 
-  return (
-    <Page title="User: Edit user">
-      <Container maxWidth={themeStretch ? false : 'lg'}>
-        <HeaderBreadcrumbs
-          heading="Edit user"
-          links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'User', href: PATH_DASHBOARD.user.list },
-            { name: capitalCase(name) },
-          ]}
-        />
+  return null;
 
-        <UserNewEditForm isEdit currentUser={currentUser} />
-      </Container>
-    </Page>
-  );
+  // return (
+  //   <Page title="User: Edit user">
+  //     <Container maxWidth={themeStretch ? false : 'lg'}>
+  //       <HeaderBreadcrumbs
+  //         heading="Edit user"
+  //         links={[
+  //           { name: 'Dashboard', href: PATH_DASHBOARD.root },
+  //           { name: 'User', href: PATH_DASHBOARD.user.list },
+  //           { name: capitalCase(name) },
+  //         ]}
+  //       />
+
+  //       <UserNewEditForm isEdit currentUser={currentUser} />
+  //     </Container>
+  //   </Page>
+  // );
 }

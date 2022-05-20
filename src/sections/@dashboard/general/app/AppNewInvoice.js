@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { sentenceCase } from 'change-case';
+import { Container, Pagination, TablePagination } from '@mui/material';
 // @mui
 import { useTheme } from '@mui/material/styles';
+import { Checkbox, Switch } from '@mui/material';
 import {
   Box,
   Card,
@@ -26,34 +28,70 @@ import Label from '../../../../components/Label';
 import Iconify from '../../../../components/Iconify';
 import Scrollbar from '../../../../components/Scrollbar';
 import MenuPopover from '../../../../components/MenuPopover';
+// import Pagination from '../../../../Pagination';
+import styles from '../../../../pages/pagination.module.scss';
+// C:\Users\hp world\Documents\Portal\FE-portal-next\src\Pagination.js
+//src\Pagination.js
 
 // ----------------------------------------------------------------------
+let PageSize = 10;
 
-export default function AppNewInvoice() {
+export default function AppNewInvoice(props) {
+  const [arr, setArr] = useState(_appInvoices);
+  const term = props.searchTerm;
+
+  useEffect(() => setArr(_appInvoices.filter((inv) => inv.promocodes.includes(term) === true)), [term]);
+  // console.log(arr);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return arr.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage]);
+
   const theme = useTheme();
 
   return (
     <Card>
-      <CardHeader title="New Invoice" sx={{ mb: 3 }} />
+      <CardHeader sx={{ mb: 3 }} />
+
       <Scrollbar>
         <TableContainer sx={{ minWidth: 720 }}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Invoice ID</TableCell>
-                <TableCell>Category</TableCell>
-                <TableCell>Price</TableCell>
+                <TableCell>S No</TableCell>
+                <TableCell>Promo Code</TableCell>
+                <TableCell>Count</TableCell>
+                <TableCell>Count Per User</TableCell>
+                <TableCell>Promo Code Id</TableCell>
+                <TableCell>Discount Type</TableCell>
+                <TableCell>Discount</TableCell>
+                <TableCell>Active</TableCell>
+                <TableCell>Public</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell />
               </TableRow>
             </TableHead>
             <TableBody>
-              {_appInvoices.map((row) => (
+              {arr.map((row) => (
                 <TableRow key={row.id}>
-                  <TableCell>{`INV-${row.id}`}</TableCell>
-                  <TableCell>{row.category}</TableCell>
-                  <TableCell>{fCurrency(row.price)}</TableCell>
+                  <TableCell>{<Checkbox />}</TableCell>
                   <TableCell>
+                    {`New `}
+                    {row.promocodes}
+                  </TableCell>
+                  <TableCell></TableCell>
+                  <TableCell></TableCell>
+                  <TableCell></TableCell>
+                  <TableCell></TableCell>
+                  <TableCell></TableCell>
+                  <TableCell></TableCell>
+                  <TableCell></TableCell>
+                  <TableCell>{<Switch defaultChecked />}</TableCell>
+                  {/* <TableCell>{fCurrency(row.price)}</TableCell> */}
+                  {/* <TableCell>
                     <Label
                       variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
                       color={
@@ -64,10 +102,10 @@ export default function AppNewInvoice() {
                     >
                       {sentenceCase(row.status)}
                     </Label>
-                  </TableCell>
-                  <TableCell align="right">
+                  </TableCell> */}
+                  {/* <TableCell align="right">
                     <MoreMenuButton />
-                  </TableCell>
+                  </TableCell> */}
                 </TableRow>
               ))}
             </TableBody>
@@ -78,15 +116,34 @@ export default function AppNewInvoice() {
       <Divider />
 
       <Box sx={{ p: 2, textAlign: 'right' }}>
-        <Button size="small" color="inherit" endIcon={<Iconify icon={'eva:arrow-ios-forward-fill'} />}>
+        {/* <Button size="small" color="inherit" endIcon={<Iconify icon={'eva:arrow-ios-forward-fill'} />}>
           View All
-        </Button>
+        </Button> */}
       </Box>
+      {/* <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={arr.length}
+        pageSize={PageSize}
+        onPageChange={(page) => setCurrentPage(page)}
+      /> */}
+      <Pagination size="large" count={5} />
     </Card>
   );
 }
 
 // ----------------------------------------------------------------------
+
+const filterPosts = (posts, query) => {
+  if (!query) {
+    return posts;
+  }
+
+  return posts.filter((post) => {
+    const postName = post.name.toLowerCase();
+    return postName.includes(query);
+  });
+};
 
 function MoreMenuButton() {
   const [open, setOpen] = useState(null);

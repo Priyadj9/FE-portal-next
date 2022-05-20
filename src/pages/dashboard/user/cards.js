@@ -24,35 +24,36 @@ UserCards.getLayout = function getLayout(page) {
 
 export default function UserCards() {
   const { themeStretch } = useSettings();
+  return null;
 
-  return (
-    <Page title="User: Cards">
-      <Container maxWidth={themeStretch ? false : 'lg'}>
-        <HeaderBreadcrumbs
-          heading="User Cards"
-          links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'User', href: PATH_DASHBOARD.user.root },
-            { name: 'Cards' },
-          ]}
-        />
+  // return (
+  //   <Page title="User: Cards">
+  //     <Container maxWidth={themeStretch ? false : 'lg'}>
+  //       <HeaderBreadcrumbs
+  //         heading="User Cards"
+  //         links={[
+  //           { name: 'Dashboard', href: PATH_DASHBOARD.root },
+  //           { name: 'User', href: PATH_DASHBOARD.user.root },
+  //           { name: 'Cards' },
+  //         ]}
+  //       />
 
-        <Box
-          sx={{
-            display: 'grid',
-            gap: 3,
-            gridTemplateColumns: {
-              xs: 'repeat(1, 1fr)',
-              sm: 'repeat(2, 1fr)',
-              md: 'repeat(3, 1fr)',
-            },
-          }}
-        >
-          {_userCards.map((user) => (
-            <UserCard key={user.id} user={user} />
-          ))}
-        </Box>
-      </Container>
-    </Page>
-  );
+  //       <Box
+  //         sx={{
+  //           display: 'grid',
+  //           gap: 3,
+  //           gridTemplateColumns: {
+  //             xs: 'repeat(1, 1fr)',
+  //             sm: 'repeat(2, 1fr)',
+  //             md: 'repeat(3, 1fr)',
+  //           },
+  //         }}
+  //       >
+  //         {_userCards.map((user) => (
+  //           <UserCard key={user.id} user={user} />
+  //         ))}
+  //       </Box>
+  //     </Container>
+  //   </Page>
+  // );
 }

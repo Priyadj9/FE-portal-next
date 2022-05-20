@@ -63,38 +63,39 @@ export default function UserAccount() {
       component: <AccountChangePassword />,
     },
   ];
+  return null;
 
-  return (
-    <Page title="User: Account Settings">
-      <Container maxWidth={themeStretch ? false : 'lg'}>
-        <HeaderBreadcrumbs
-          heading="Account"
-          links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'User', href: PATH_DASHBOARD.user.root },
-            { name: 'Account Settings' },
-          ]}
-        />
+  // return (
+  //   <Page title="User: Account Settings">
+  //     <Container maxWidth={themeStretch ? false : 'lg'}>
+  //       <HeaderBreadcrumbs
+  //         heading="Account"
+  //         links={[
+  //           { name: 'Dashboard', href: PATH_DASHBOARD.root },
+  //           { name: 'User', href: PATH_DASHBOARD.user.root },
+  //           { name: 'Account Settings' },
+  //         ]}
+  //       />
 
-        <Tabs
-          allowScrollButtonsMobile
-          variant="scrollable"
-          scrollButtons="auto"
-          value={currentTab}
-          onChange={onChangeTab}
-        >
-          {ACCOUNT_TABS.map((tab) => (
-            <Tab disableRipple key={tab.value} label={capitalCase(tab.value)} icon={tab.icon} value={tab.value} />
-          ))}
-        </Tabs>
+  //       <Tabs
+  //         allowScrollButtonsMobile
+  //         variant="scrollable"
+  //         scrollButtons="auto"
+  //         value={currentTab}
+  //         onChange={onChangeTab}
+  //       >
+  //         {ACCOUNT_TABS.map((tab) => (
+  //           <Tab disableRipple key={tab.value} label={capitalCase(tab.value)} icon={tab.icon} value={tab.value} />
+  //         ))}
+  //       </Tabs>
 
-        <Box sx={{ mb: 5 }} />
+  //       <Box sx={{ mb: 5 }} />
 
-        {ACCOUNT_TABS.map((tab) => {
-          const isMatched = tab.value === currentTab;
-          return isMatched && <Box key={tab.value}>{tab.component}</Box>;
-        })}
-      </Container>
-    </Page>
-  );
+  //       {ACCOUNT_TABS.map((tab) => {
+  //         const isMatched = tab.value === currentTab;
+  //         return isMatched && <Box key={tab.value}>{tab.component}</Box>;
+  //       })}
+  //     </Container>
+  //   </Page>
+  // );
 }

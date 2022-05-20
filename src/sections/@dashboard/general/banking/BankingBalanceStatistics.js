@@ -56,7 +56,7 @@ export default function BankingBalanceStatistics() {
 
   return (
     <Card>
-      <CardHeader
+      {/* <CardHeader
         title="Balance Statistics"
         subheader="(+43% Income | +12% Expense) than last year"
         action={
@@ -88,7 +88,7 @@ export default function BankingBalanceStatistics() {
             <ReactApexChart type="bar" series={item.data} options={chartOptions} height={364} />
           )}
         </Box>
-      ))}
+      ))} */}
     </Card>
   );
 }

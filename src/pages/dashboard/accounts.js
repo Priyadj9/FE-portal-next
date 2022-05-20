@@ -31,7 +31,7 @@ export default function GeneralBanking() {
 
   return (
     <Page title="General: Banking">
-      <Container maxWidth={themeStretch ? false : 'xl'}>
+      {/* <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={7}>
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3}>
@@ -73,7 +73,7 @@ export default function GeneralBanking() {
             </Stack>
           </Grid>
         </Grid>
-      </Container>
+      </Container> */}
     </Page>
   );
 }

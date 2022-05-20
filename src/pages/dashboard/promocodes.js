@@ -1,6 +1,7 @@
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Container, Grid, Stack } from '@mui/material';
+import { Container, Grid, Stack, Button } from '@mui/material';
+import TextField from '@mui/material/TextField';
 // hooks
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
@@ -8,6 +9,8 @@ import useSettings from '../../hooks/useSettings';
 import Layout from '../../layouts';
 // components
 import Page from '../../components/Page';
+import { Box, Checkbox } from '@mui/material';
+import React, { useState } from 'react';
 // sections
 import {
   AppWidget,
@@ -29,6 +32,20 @@ GeneralApp.getLayout = function getLayout(page) {
 };
 
 // ----------------------------------------------------------------------
+function Search(props) {
+  return (
+    <div className="search">
+      <TextField
+        onChange={props.onChange}
+        style={{ width: '30%' }}
+        id="outlined-basic"
+        variant="outlined"
+        fullWidth
+        label="Search"
+      />
+    </div>
+  );
+}
 
 export default function GeneralApp() {
   const { user } = useAuth();
@@ -36,15 +53,31 @@ export default function GeneralApp() {
   const theme = useTheme();
 
   const { themeStretch } = useSettings();
+  const [term, setTerm] = useState('');
 
   return (
     <Page title="General: App">
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={8}>
-            <AppWelcome displayName={user?.displayName} />
+          <Grid container justifyContent="space-between">
+            <Grid item md={8}>
+              <Search
+                onChange={(e) => {
+                  setTerm(e.target.value);
+                }}
+              ></Search>
+            </Grid>
+            <Grid item md={2}>
+              <Button size="large" variant="contained">
+                New Item
+              </Button>
+            </Grid>
           </Grid>
 
+          {/* <Grid item xs={12} md={8}>
+            <AppWelcome displayName={user?.displayName} />
+          </Grid> */}
+          {/* 
           <Grid item xs={12} md={4}>
             <AppFeatured />
           </Grid>
@@ -85,13 +118,12 @@ export default function GeneralApp() {
 
           <Grid item xs={12} md={6} lg={8}>
             <AppAreaInstalled />
-          </Grid>
+          </Grid> */}
 
-          <Grid item xs={12} lg={8}>
-            <AppNewInvoice />
+          <Grid item xs={12} lg={12}>
+            <AppNewInvoice searchTerm={term} />
           </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
+          {/* <Grid item xs={12} md={6} lg={4}>
             <AppTopRelated />
           </Grid>
 
@@ -108,7 +140,7 @@ export default function GeneralApp() {
               <AppWidget title="Conversion" total={38566} icon={'eva:person-fill'} chartData={48} />
               <AppWidget title="Applications" total={55566} icon={'eva:email-fill'} color="warning" chartData={75} />
             </Stack>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </Page>
